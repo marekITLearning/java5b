@@ -1,15 +1,38 @@
 <template>
-  <h3>{{ title }}</h3>
+  <h3>{{ msg }}</h3>
+
+  <h4 v-if="error !== ''" style="color: red">{{ error }}</h4>
+
+  <div v-if="data">
+    {{ data }}
+  </div>
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
+import xapi from '@/services'
 
 export default defineComponent({
-  name: 'MovieDatabase',
-  setup () {
-      const title = 'Imdb Movie Database'
-    return { title }
+  name: 'HelloWorld',
+  props: {
+    msg: {
+      type: String,
+      required: true
+    }
+  },
+  setup() {
+    const data = ref(null)
+
+    const error = ref('')
+
+    xapi.get('catalog')
+      .then(r => {
+        data.value = r.data
+      })
+      .catch(() => {
+        error.value = 'Unable to get data from webservice'
+      })
+    return { data, error }
   }
 })
 </script>
