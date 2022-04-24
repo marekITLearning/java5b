@@ -2,8 +2,10 @@ package sk.itlearning.java5.webservicejpa;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "zakaznik", schema = "public")
 public class Zakaznik {
 
 	@Id

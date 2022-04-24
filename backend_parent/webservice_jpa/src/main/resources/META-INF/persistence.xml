@@ -6,13 +6,8 @@
 
 	<persistence-unit name="APP_DB" transaction-type="JTA">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<jta-data-source>jdbc/appdb</jta-data-source>
 		<class>sk.itlearning.java5.webservicejpa.Zakaznik</class>
-		<properties>
-			<property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver" />
-			<property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql/zakaznik" />
-			<property name="jakarta.persistence.jdbc.user" value="postgres" />
-			<property name="jakarta.persistence.jdbc.password" value="postgres" />
-		</properties>
 	</persistence-unit>
 
 </persistence>
